@@ -1,55 +1,51 @@
 import Image from 'next/image'
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
+import Link from 'next/link'
+import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
 import { Warning } from "../types/warnings"
 
 export function WarningCard({ warning }: { warning: Warning }) {
   return (
-    <Card>
+    <Card className="h-full flex flex-col">
       <CardHeader>
         <CardTitle className="flex justify-between items-center">
-          <span>{warning.title}</span>
+          <span className="text-lg">{warning.title}</span>
           <Badge variant={warning._type === '.FoodWarning' ? 'default' : 'secondary'}>
             {warning._type === '.FoodWarning' ? 'FOOD' : 'PRODUCT'}
           </Badge>
         </CardTitle>
       </CardHeader>
-      <CardContent>
-        <div className="flex flex-col md:flex-row gap-4">
+      <CardContent className="flex-grow">
+        <div className="flex flex-col gap-4 h-full">
           {warning.product?.imageUrls?.[0] && (
-            <div className="w-full md:w-1/3">
+            <div className="w-full">
               <Image
                 src={warning.product.imageUrls[0]}
                 alt={warning.product.designation || 'Product image'}
                 width={300}
                 height={300}
-                className="rounded-lg object-cover"
+                className="rounded-lg object-cover w-full h-48"
               />
             </div>
           )}
-          <div className="w-full md:w-2/3">
-            <p className="text-sm text-gray-500 mb-2">
+          <div className="space-y-2 flex-grow">
+            <p className="text-sm text-gray-500">
               Published: {new Date(warning.publishedDate).toLocaleDateString()}
             </p>
-            {warning.warning && <p className="font-semibold mb-2">Warning: {warning.warning}</p>}
-            {warning.product?.designation && <p className="mb-2">{warning.product.designation}</p>}
+            {warning.warning && <p className="font-semibold">Warning: {warning.warning}</p>}
+            {warning.product?.designation && <p>{warning.product.designation}</p>}
             {warning.product?.manufacturer && (
-              <p className="text-sm mb-2">Manufacturer: {warning.product.manufacturer}</p>
-            )}
-            {warning.affectedStates && warning.affectedStates.length > 0 && (
-              <div className="mb-2">
-                <span className="font-semibold">Affected States: </span>
-                {warning.affectedStates.join(', ')}
-              </div>
-            )}
-            {warning.link && (
-              <a href={warning.link} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
-                More Information
-              </a>
+              <p className="text-sm">Manufacturer: {warning.product.manufacturer}</p>
             )}
           </div>
         </div>
       </CardContent>
+      <CardFooter>
+        <Link href={`/warning/${warning.id}`} className="w-full">
+          <Button variant="outline" className="w-full">View Details</Button>
+        </Link>
+      </CardFooter>
     </Card>
   )
 }

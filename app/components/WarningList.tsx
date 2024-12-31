@@ -25,10 +25,12 @@ export function WarningList({ initialWarnings }: { initialWarnings: Warning[] })
 
   return (
     <div className="space-y-8">
-      {warnings.map(warning => (
-        <WarningCard key={warning.id} warning={warning} />
-      ))}
-      <div className="flex justify-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {warnings.map(warning => (
+          <WarningCard key={warning.id} warning={warning} />
+        ))}
+      </div>
+      <div className="flex justify-center mt-8">
         <Button onClick={loadMore} disabled={loading}>
           {loading ? 'Loading...' : 'Load More'}
         </Button>
