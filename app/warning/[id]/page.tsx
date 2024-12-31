@@ -1,6 +1,5 @@
 import { fetchWarnings } from '@/actions/fetchWarnings'
 import { WarningDetails } from '@/components/WarningDetails'
-import { Warning } from '@/types/warnings'
 
 export default async function WarningPage({ params }: { params: { id: string } }) {
   const warnings = await fetchWarnings()
