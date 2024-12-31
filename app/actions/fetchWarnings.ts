@@ -2,7 +2,14 @@
 
 import { WarningResponse, Warning } from '../types/warnings'
 
-export async function fetchWarnings(start: number = 0): Promise<Warning[]> {
+export async function fetchWarnings(start: number = 0, fromDate?: string): Promise<Warning[]> {
+  const defaultFromDate = new Date();
+  defaultFromDate.setMonth(defaultFromDate.getMonth() - 3); // Default to 3 months ago
+
+  const fromDateTimestamp = fromDate 
+    ? new Date(fromDate).getTime() 
+    : defaultFromDate.getTime();
+
   const response = await fetch('https://megov.bayern.de/verbraucherschutz/baystmuv-verbraucherinfo/rest/api/warnings/merged', {
     method: 'POST',
     headers: {
@@ -14,13 +21,13 @@ export async function fetchWarnings(start: number = 0): Promise<Warning[]> {
         rows: 10,
         sort: "publishedDate desc, title asc",
         start: start,
-        fq: ["publishedDate > 1630067654000"]
+        fq: [`publishedDate > ${fromDateTimestamp}`]
       },
       products: {
         rows: 10,
         sort: "publishedDate desc, title asc",
         start: start,
-        fq: ["publishedDate > 1630067654000"]
+        fq: [`publishedDate > ${fromDateTimestamp}`]
       }
     })
   });
