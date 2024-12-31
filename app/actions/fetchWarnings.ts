@@ -35,9 +35,6 @@ export async function fetchWarnings(start: number = 0): Promise<Warning[]> {
     throw new Error('Unexpected API response structure');
   }
 
-  return data.response.docs.map(warning => ({
-    ...warning,
-    type: warning.type || 'UNKNOWN'
-  }));
+  return data.response.docs;
 }
 

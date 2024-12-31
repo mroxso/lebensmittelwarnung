@@ -6,7 +6,8 @@ export default async function Home() {
 
   return (
     <main className="container mx-auto py-8">
-      <h1 className="text-3xl font-bold mb-8">Lebensmittelwarnung</h1>
+      <h1 className="text-4xl font-bold mb-4">Lebensmittelwarnung</h1>
+      <p className="text-xl mb-8">Aktuelle Lebensmittel- und Produktwarnungen</p>
       <WarningList initialWarnings={initialWarnings} />
     </main>
   )

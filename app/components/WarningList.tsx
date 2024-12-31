@@ -24,7 +24,7 @@ export function WarningList({ initialWarnings }: { initialWarnings: Warning[] })
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-8">
       {warnings.map(warning => (
         <WarningCard key={warning.id} warning={warning} />
       ))}

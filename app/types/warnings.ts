@@ -1,13 +1,24 @@
+export interface Product {
+  _type?: string;
+  designation?: string;
+  imageUrls?: string[];
+  manufacturer?: string;
+}
+
 export interface Warning {
-  id: string;
+  _type: string;
+  archived?: boolean;
+  id: number;
+  link?: string;
+  publishedDate: number;
   title: string;
-  text: string;
-  publishedDate: string;
-  type: 'FOOD' | 'PRODUCT';
+  warning?: string;
+  affectedStates?: string[];
+  product?: Product;
 }
 
 export interface WarningResponse {
-  response?: {
+  response: {
     docs: Warning[];
     numFound: number;
   };
