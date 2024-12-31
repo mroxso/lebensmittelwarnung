@@ -1,0 +1,38 @@
+{
+    "response": {
+        "docs": [
+            {
+                "_type": ".FoodWarning",
+                "archived": false,
+                "id": 52026,
+                "link": "https://www.lebensmittelwarnung.de/___lebensmittelwarnung.de/Meldungen/2024/12_Dezember/241230_30_BE_gemahlen_Kreuzkuemmel/241230_30_BE_gemahlen_Kreuzkuemmel.html",
+                "publishedDate": 1735571946000,
+                "title": "Kreuzkümmel gemahlen, 100 Gramm",
+                "warning": "Rückstände und Kontaminanten",
+                "affectedStates": [
+                    "Baden-Württemberg",
+                    "Bayern",
+                    "Berlin",
+                    "Bremen",
+                    "Hamburg",
+                    "Hessen",
+                    "Nordrhein-Westfalen",
+                    "Rheinland-Pfalz",
+                    "Saarland",
+                    "Sachsen",
+                    "Sachsen-Anhalt",
+                    "Niedersachsen"
+                ],
+                "product": {
+                    "_type": ".FoodWarning$Food",
+                    "designation": "Kreuzkümmel gemahlen, 100 Gramm",
+                    "imageUrls": [
+                        "https://www.lebensmittelwarnung.de/___lebensmittelwarnung.de/Meldungen/2024/12_Dezember/241230_30_BE_gemahlen_Kreuzkuemmel/241230_30_BE_gemahlen_Kreuzkuemmel_Bild.jpg?__blob=normal&v=1"
+                    ],
+                    "manufacturer": "Inverkehrbringer: Orient Master GmbH,  Kantstr. 101,  10627 Berlin Go Asia Deutschland GmbH, Mecklenburgische Str. 22 A, 10713 Berlin"
+                }
+            }
+         ],
+        "numFound": 228
+    }
+}
